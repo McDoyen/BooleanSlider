@@ -1,3 +1,4 @@
+import * as classNames from "classnames";
 import { DOM } from "react";
 
 export interface OnClickProps {
@@ -17,16 +18,16 @@ export interface BooleanSliderProps {
 }
 
 export function BooleanSliderComponent(props: BooleanSliderProps) {
-    let classn = "wgt-BooleanSlider_control form-control " as string;
+    let classes = "wgt-BooleanSlider_control form-control " as string;
     if (props.dataAttribute !== null && props.dataAttribute) {
-        classn += "btn btn-primary";
+        classes += "btn btn-primary";
     } else {
-        classn += "btn btn-default";
+        classes += "btn btn-default";
     }
 
     return (
         DOM.div({ className: "wgt-BooleanSlider" },
-            DOM.div({ className: classn },
+            DOM.div({ className: classes },
                 DOM.input({
                     className: "wgt-BooleanSlider__input",
                     onClick: () => executeMicroflow(props.microflowProps.microflow, props.microflowProps.guid),

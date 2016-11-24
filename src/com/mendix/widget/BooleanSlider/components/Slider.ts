@@ -26,22 +26,22 @@ export function BooleanSliderComponent(props: BooleanSliderProps) {
     }
 
     return (
-        DOM.div({ className: "wgt-BooleanSlider" },
+        DOM.div({ className: classNames("wgt-BooleanSlider") },
             DOM.div({ className: classn },
                 DOM.input({
-                    className: "wgt-BooleanSlider__input",
+                    className: classNames("wgt-BooleanSlider__input"),
                     onClick: () => executeMicroflow(props.microflowProps.microflow, props.microflowProps.guid),
                     type: "checkbox"
                 }),
                 DOM.div({
-                    className: "wgt-BooleanSlider__toggle"
+                    className: classNames("wgt-BooleanSlider__toggle")
                 },
                     DOM.span({
-                        className: "wgt-BooleanSlider__toggletrue"
+                        className: classNames("wgt-BooleanSlider__toggletrue")
                     },
                         "Yes"),
                     DOM.span({
-                        className: "wgt-BooleanSlider__togglefalse"
+                        className: classNames("wgt-BooleanSlider__togglefalse")
                     }, "No"
                     )
                 )

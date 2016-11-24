@@ -1,7 +1,7 @@
 import * as dojoDeclare from "dojo/_base/declare";
 import * as WidgetBase from "mxui/widget/_WidgetBase";
 import { createElement } from "react";
-import { render } from "react-dom";
+import { render, unmountComponentAtNode } from "react-dom";
 
 import { BooleanSliderComponent, OnClickProps } from "./components/Slider";
 
@@ -16,10 +16,8 @@ class BooleanSlider extends WidgetBase {
 
     // internal variables
     private contextObject: mendix.lib.MxObject;
-    private handles: number[];
 
     postCreate() {
-        this.handles = [];
         this.updateRendering();
     }
 
@@ -27,21 +25,16 @@ class BooleanSlider extends WidgetBase {
         this.contextObject = object;
         this.resetSubscriptions();
         this.updateRendering();
-        if (callback) { callback(); }
+        callback();
     }
 
-    createOnClickProps(): OnClickProps {
-        return (
-            {
-                guid: (this.contextObject) ? this.contextObject.getGuid() : "",
-                microflow: this.onChangeMicroflow
-            }
-        );
+    uninitialize(): boolean {
+        unmountComponentAtNode(this.domNode);
+        return true;
     }
 
     private updateRendering(callback?: Function) {
-        logger.debug(this.id + ".updateRendering");
-        let val = this.contextObject
+        const val = this.contextObject
             ? (this.contextObject.get(this.dataAttribute)) as boolean
             : false;
         this.falseValue = this.contextObject
@@ -56,14 +49,26 @@ class BooleanSlider extends WidgetBase {
             dataAttribute: val,
             editable: this.editable,
             falseValue: this.falseValue,
+            microflowProps: this.createOnClickProps(),
             trueValue: this.trueValue
-
         }), this.domNode
         );
     }
 
-    resetSubscriptions() {
-        this.unsubscribe();
+    private getValue(attr: string, otherValue: string) {
+        return attr ? attr : otherValue;
+    }
+
+    private createOnClickProps(): OnClickProps {
+        return ({
+            guid: this.contextObject ? this.contextObject.getGuid() : "",
+            microflow: this.onChangeMicroflow
+        }
+        );
+    }
+
+    private resetSubscriptions() {
+        this.unsubscribeAll();
         if (this.contextObject) {
             this.subscribe({
                 attr: this.dataAttribute,
@@ -71,21 +76,9 @@ class BooleanSlider extends WidgetBase {
                 guid: this.contextObject.getGuid()
             });
         }
-
-    }
-
-    private getValue(attr: string, otherValue: string) {
-        return attr ? attr : otherValue;
-    }
-    unsubscribe() {
-        if (this.handles) {
-            for (let handle of this.handles) {
-                mx.data.unsubscribe(handle);
-            }
-            this.handles = [];
-        }
     }
 }
+
 // Declare widget prototype the Dojo way
 // Thanks to https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/dojo/README.md
 // tslint:disable : only-arrow-functions

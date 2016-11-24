@@ -33,8 +33,6 @@ class BooleanSlider extends WidgetBase {
     createOnClickProps(): OnClickProps {
         return (
             {
-                // actionname: this.onChangeMicroflow,
-                // applyto: "selection",
                 guid: (this.contextObject) ? this.contextObject.getGuid() : "",
                 microflow: this.onChangeMicroflow
             }
@@ -43,15 +41,12 @@ class BooleanSlider extends WidgetBase {
 
     private updateRendering(callback?: Function) {
         logger.debug(this.id + ".updateRendering");
-
         let val = this.contextObject
             ? (this.contextObject.get(this.dataAttribute)) as boolean
             : false;
-
         this.falseValue = this.contextObject
             ? this.getValue(this.contextObject.get(this.falseValue) as string, "False")
             : "False";
-
         this.trueValue = this.contextObject
             ? this.getValue(this.contextObject.get(this.trueValue) as string, "True")
             : "True";
@@ -91,9 +86,11 @@ class BooleanSlider extends WidgetBase {
         }
     }
 }
-
+// Declare widget prototype the Dojo way
+// Thanks to https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/dojo/README.md
+// tslint:disable : only-arrow-functions
 dojoDeclare(
-    "BooleanSlider.widget.BooleanSlider",
+    "com.mendix.widget.BooleanSlider.BooleanSlider",
     [ WidgetBase ],
     function (Source: any) {
         let result: any = {};

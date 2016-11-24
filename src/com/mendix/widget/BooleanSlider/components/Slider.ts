@@ -18,16 +18,16 @@ export interface BooleanSliderProps {
 }
 
 export function BooleanSliderComponent(props: BooleanSliderProps) {
-    let classes = "wgt-BooleanSlider_control form-control " as string;
+    let classn = "wgt-BooleanSlider_control form-control " as string;
     if (props.dataAttribute !== null && props.dataAttribute) {
-        classes += "btn btn-primary";
+        classn += "btn btn-primary";
     } else {
-        classes += "btn btn-default";
+        classn += "btn btn-default";
     }
 
     return (
         DOM.div({ className: "wgt-BooleanSlider" },
-            DOM.div({ className: classes },
+            DOM.div({ className: classn },
                 DOM.input({
                     className: "wgt-BooleanSlider__input",
                     onClick: () => executeMicroflow(props.microflowProps.microflow, props.microflowProps.guid),

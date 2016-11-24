@@ -40,19 +40,28 @@ module.exports = function(grunt) {
 
         copy: {
             distDeployment: {
-                files: [
-                    { dest: "./dist/MxTestProject/deployment/web/widgets", cwd: "./dist/tmp/src/", src: ["**/*"], expand: true }
-                ]
+                files: [{
+                    dest: "./dist/MxTestProject/deployment/web/widgets",
+                    cwd: "./dist/tmp/src/",
+                    src: ["**/*"],
+                    expand: true
+                }]
             },
             mpk: {
-                files: [
-                    { dest: "./dist/MxTestProject/widgets", cwd: "./dist/" + pkg.version + "/", src: [pkg.name + ".mpk"], expand: true }
-                ]
+                files: [{
+                    dest: "./dist/MxTestProject/widgets",
+                    cwd: "./dist/" + pkg.version + "/",
+                    src: [pkg.name + ".mpk"],
+                    expand: true
+                }]
             },
             source: {
-                files: [
-                    { dest: "./dist/tmp/src", cwd: "./src/", src: ["**/*", "!**/*.ts"], expand: true }
-                ]
+                files: [{
+                    dest: "./dist/tmp/src",
+                    cwd: "./src/",
+                    src: ["**/*", "!**/*.ts"],
+                    expand: true
+                }]
             }
         },
 

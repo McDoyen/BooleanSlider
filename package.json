@@ -1,25 +1,26 @@
 {
     "name": "BooleanSlider",
     "version": "1.0.0",
-    "description": "This is an implementation of a boolean slider using just HTML and CSS.",
+    "description": "This is an implementation of a boolean slider using typescript and react js",
     "license": "Apache 2",
     "author": "Paul McDoyen",
     "private": true,
     "dependencies": {
         "classnames": "^2.2.5",
-        "react": "^15.4.0",
-        "react-dom": "^15.4.0"
+        "core-js": "^2.4.1",
+        "react": "~15.4.1",
+        "react-dom": "~15.4.1"
     },
     "devDependencies": {
         "@types/big.js": "0.0.31",
         "@types/classnames": "0.0.31",
         "@types/core-js": "^0.9.34",
         "@types/dojo": "^1.9.35",
-        "@types/enzyme": "^2.4.36",
-        "@types/jasmine": "^2.5.35",
+        "@types/enzyme": "^2.5.38",
+        "@types/jasmine": "^2.5.38",
         "@types/karma": "^0.13.33",
-        "@types/react": "^0.14.37",
-        "@types/react-dom": "^0.14.17",
+        "@types/react": "^0.14.50",
+        "@types/react-dom": "^0.14.19",
         "copy-webpack-plugin": "^3.0.1",
         "enzyme": "^2.5.1",
         "grunt": "1.0.1",

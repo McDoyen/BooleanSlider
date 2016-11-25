@@ -1,4 +1,4 @@
-import * as classNames from "classnames";
+// import * as classNames from "classnames";
 import { DOM } from "react";
 
 export interface OnClickProps {
@@ -17,38 +17,30 @@ export interface BooleanSliderProps {
     onClick?: Function;
 }
 
-export function BooleanSliderComponent(props: BooleanSliderProps) {
+export const BooleanSliderComponent = (props: BooleanSliderProps) => {
     let classn = "wgt-BooleanSlider_control form-control " as string;
-    if (props.dataAttribute !== null && props.dataAttribute) {
+    if (props.dataAttribute) {
         classn += "btn btn-primary";
     } else {
         classn += "btn btn-default";
     }
 
     return (
-        DOM.div({ className: classNames("wgt-BooleanSlider") },
+        DOM.div({ className: "wgt-BooleanSlider" },
             DOM.div({ className: classn },
                 DOM.input({
-                    className: classNames("wgt-BooleanSlider__input"),
+                    className: "wgt-BooleanSlider__input",
                     onClick: () => executeMicroflow(props.microflowProps.microflow, props.microflowProps.guid),
                     type: "checkbox"
                 }),
-                DOM.div({
-                    className: classNames("wgt-BooleanSlider__toggle")
-                },
-                    DOM.span({
-                        className: classNames("wgt-BooleanSlider__toggletrue")
-                    },
-                        "Yes"),
-                    DOM.span({
-                        className: classNames("wgt-BooleanSlider__togglefalse")
-                    }, "No"
-                    )
+                DOM.div({ className: ("wgt-BooleanSlider__toggle") },
+                    DOM.span({ className: "wgt-BooleanSlider__toggletrue" }, "Yes"),
+                    DOM.span({ className: "wgt-BooleanSlider__togglefalse" }, "No")
                 )
             )
         )
     );
-}
+};
 
 const executeMicroflow = (actionname: string, guids: string) => {
     if (actionname) {

@@ -1,18 +1,17 @@
 # Boolean Slider
 
-This is an implementation of a boolean slider using typescript and react js
+Replce checkboxes.
 
-## Typical usage scenario
+## Features
 
-Use this in both mobile and web for an upgrade to a checkbox.
+Click slider to toggle.
 
-## Usage
+## Dependencies
 
-The control uses the Bootstrap classes "btn-primary" for true, and "btn-default" for false, so that it will pick up the colors from your theme automatically. Additionally, you may want to change the toggle (center circle), by using the following:
+Mendix 6.8
 
-```css
-/* color of the circle */
-.wgt-BooleanSlider__toggle:before {
-    background-color: #fff;
-}
-```
+## Disclaimer
+
+Status: In development
+
+This widget should not be used in a production environment. No guarantees are given that this works or keeps working, until it is officially released.
